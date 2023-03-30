@@ -62,9 +62,9 @@ session_start();
                     <a href="<?php echo BASEURL ?>/index.php">Home</a>
                   </li>
 
-                  <li><a href="<?php echo BASEURL ?>/buy.php">Buy</a></li>
-                  <li><a href="<?php echo BASEURL ?>/rent.php">Rent</a></li>
-                  <li class="has-children"><a href="<?php echo BASEURL ?>/properties.php">Properties</a>
+                  <li><a href="<?php echo BASEURL ?>/index.php?type=sale">Sale</a></li>
+                  <li><a href="<?php echo BASEURL ?>/index.php?type=rent">Rent</a></li>
+                  <li class="has-children"><a href="#">Properties</a>
                       <ul class="dropdown arrow-top">
                         <li><a href="#">Condo</a></li>
                         <li><a href="#">Property Land</a></li>

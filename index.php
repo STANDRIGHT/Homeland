@@ -2,12 +2,37 @@
     <?php include "config/config.php";?>
 
     <?php
-      //make query
-      $select = $conn->query("SELECT * FROM props");
-      $select->execute();
+      if(isset($_GET['type'])){
+        $type = $_GET["type"];
 
-      //fetch-data
-      $props = $select-> fetchAll(PDO::FETCH_OBJ);
+        // query for type
+        $query = $conn->query("SELECT * FROM props WHERE _type='$type' ");
+        $query->execute();
+        $props = $query->fetchAll(PDO::FETCH_OBJ);
+
+        //Once the Get["type]  is in set it take u to the Rent or sale property
+        echo "<script>window.location.href='#property'</script>";
+
+
+      }else if(isset($_GET['price'])){
+        $price = $_GET["price"];
+
+        // query for price
+        $Pricequery = $conn->query("SELECT * FROM props ORDER BY price $price");
+        $Pricequery->execute();
+        $props = $Pricequery->fetchAll(PDO::FETCH_OBJ);
+
+        //Once the Get["type]  is in set it take u to the Rent or sale property
+        echo "<script>window.location.href='#property'</script>";
+      }else{
+      //make query
+        $select = $conn->query("SELECT * FROM props");
+        $select->execute();
+
+        //fetch-data
+        $props = $select->fetchAll(PDO::FETCH_OBJ);
+      }
+      
 
       // print_r($props);
     ?>
@@ -33,8 +58,7 @@
 
 
 
-
-
+      <!-- SEARCH FORM START HERE -->
     <div class="site-section site-section-sm pb-0">
       <div class="container">
         <div class="row">
@@ -101,26 +125,26 @@
           <div class="col-md-12">
             <div class="view-options bg-white py-3 px-3 d-md-flex align-items-center">
               <div class="mr-auto">
-                <a href="index.html" class="icon-view view-module active"><span class="icon-view_module"></span></a>
-                <a href="view-list.html" class="icon-view view-list"><span class="icon-view_list"></span></a>
+                <a href="<?php 'BASEURL' ?>" class="icon-view view-module active"><span class="icon-view_module"></span></a>
+                <!-- <a href="view-list.html" class="icon-view view-list"><span class="icon-view_list"></span></a> -->
                 
               </div>
               <div class="ml-auto d-flex align-items-center">
                 <div>
-                  <a href="#" class="view-list px-3 border-right active">All</a>
-                  <a href="#" class="view-list px-3 border-right">Rent</a>
-                  <a href="#" class="view-list px-3">Sale</a>
+                  <a href="<?php 'BASEURL' ?>" class="view-list px-3 border-right active">All</a>
+                  <a href="index.php?type=Rent" class="view-list px-3 border-right">Rent</a>
+                  <a href="index.php?type=sale" class="view-list px-3 border-right">Sale</a>
+                  <a href="index.php?price=ASC" class="view-list px-3 border-right">Price Ascending</a>
+                  <a href="index.php?price=DESC" class="view-list px-3">Price Descending</a>
                 </div>
-
-
-                <div class="select-wrap">
+                <!-- <div class="select-wrap">
                   <span class="icon icon-arrow_drop_down"></span>
                   <select class="form-control form-control-sm d-block rounded-0">
                     <option value="">Sort by</option>
                     <option value="">Price Ascending</option>
                     <option value="">Price Descending</option>
                   </select>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -133,7 +157,7 @@
 
 
 <!-- CARD START'S HERE -->
-    <div class="site-section site-section-sm bg-light">
+    <div class="site-section site-section-sm bg-light" id="property">
       <div class="container">
         <div class="row mb-5">
           <?php foreach ($props as $prop): ?>

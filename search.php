@@ -28,8 +28,8 @@
             // print_r($listings);
             // die();
     }else{
-      echo ("<script>location.href = '" . BASEURL . "/index.php;</script>");
-      //  header("Location:".BASEURL."/index.php");
+       echo "<script>window.location.href='index.php'</script>"; 
+      // header("location:index.php");
     }
 
 
