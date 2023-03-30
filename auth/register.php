@@ -3,9 +3,11 @@
 
 <?php 
   if(isset($_SESSION['username'])){
-    header("location:../index.php");
-  }
+  echo ("<script>location.href = '" . BASEURL . "/login.php</script>");
+}
 ?>
+
+
 
 <?php
 
@@ -29,8 +31,10 @@
             ':email' => $email,
             ':mypassword' => password_hash($password, PASSWORD_DEFAULT)
           ]);
-        
-            header("location:login.php");
+          
+          // header("Location:".BASEURL."/login.php");
+          echo ("<script>location.href = '" . BASEURL . "/login.php</script>");
+          // header("location:login.php");
         }else{
             echo "<script>alert=('INVALID INPUT')</script>";
         } 

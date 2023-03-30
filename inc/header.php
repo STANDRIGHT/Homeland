@@ -1,7 +1,7 @@
 
 <?php 
+define("BASEURL", "http://localhost/UDEMY%20COURSES/Homeland/");
 session_start();
-define("BASEURL", "http://localhost/homeland");
 
 ?>
 
@@ -11,7 +11,6 @@ define("BASEURL", "http://localhost/homeland");
     <title>Homeland &mdash; Colorlib Website Template</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
     <link rel="stylesheet" href="<?php echo BASEURL; ?>/fonts/icomoon/style.css">
 
@@ -35,7 +34,7 @@ define("BASEURL", "http://localhost/homeland");
   <body>
 
 
-  <div class="site-loader"></div>
+  <!-- <div class="site-loader"></div> -->
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -62,6 +61,7 @@ define("BASEURL", "http://localhost/homeland");
                   <li class="active">
                     <a href="<?php echo BASEURL ?>/index.php">Home</a>
                   </li>
+
                   <li><a href="<?php echo BASEURL ?>/buy.php">Buy</a></li>
                   <li><a href="<?php echo BASEURL ?>/rent.php">Rent</a></li>
                   <li class="has-children"><a href="<?php echo BASEURL ?>/properties.php">Properties</a>
@@ -71,20 +71,22 @@ define("BASEURL", "http://localhost/homeland");
                         <li><a href="#">Commercial Building</a></li>
                       </ul>
                   </li>
+
                   <li><a href="<?php echo BASEURL ?>/about.php">About</a></li>
                   <li><a href="<?php echo BASEURL ?>/contact.php">Contact</a></li>
-
-                  <?php if(isset($_SESSION['username'])) : ?>
+                  
+                  <?php if(isset($_SESSION["username"])) : ?>
                   <li class="has-children">
-                      <a href="#" style="padding-right:1rem; color:yellow;"><?php  echo "Hi ", strtolower($_SESSION["username"]) ;?></a>
+                      <a href="#" style="padding-right:1rem; color:yellow;"><?php echo strtolower($_SESSION['username']); ?></a>
                       <ul class="dropdown arrow-top">
                         <li><a href="<?php echo BASEURL; ?>/auth/logout.php">logout</a></li>
                       </ul>
-                    </li>
+                  </li>
                   
                   <?php else : ?>
                   <li><a href="<?php echo BASEURL ?>/auth/login.php">Login</a></li>
                   <li><a href="<?php echo BASEURL ?>/auth/register.php">Register</a></li>
+
                   <?php endif; ?>
                 </ul>
                   

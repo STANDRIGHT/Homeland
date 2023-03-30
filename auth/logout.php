@@ -4,6 +4,5 @@
     session_unset();
     session_destroy();
 
-    header("location:http://localhost/homeland");
-    
+    header("location:http://localhost/UDEMY%20COURSES/Homeland");
 ?>

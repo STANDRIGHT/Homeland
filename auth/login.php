@@ -1,5 +1,5 @@
-<?php include("../inc/header.php"); ?>
-<?php include("../config/config.php"); ?>
+<?php include("../inc/header.php");?>
+<?php include("../config/config.php");?>
 
 
 <?php
@@ -24,35 +24,34 @@
             $login->execute();
 
             //fetch data
-            $fetch = $login->fetchAll(PDO::FETCH_ASSOC);
+            $fetch = $login->fetch(PDO::FETCH_ASSOC);
+            // $fetch = $login->fetchAll(PDO::FETCH_ASSOC);
 
-            
-            //foreach loop
-            foreach ($fetch as $fec);
-
-            if(password_verify($password, $fec['mypassword'])) {
-                
-                $_SESSION['username'] = $fec['username'];
-                $_SESSION['email'] = $fec['email'];
-                $_SESSION['user_id'] = $fec['id'];
-
-                header("location:../index.php");
-
-            }else{
-                echo "<script>alert=('email or password wrong')</script>";
-            }
-            
-
-            if ($login->rowCount() > 0) {
-              
-              // echo "email is valid";
-              // echo $login->rowCount();
+            if($login->rowCount() > 0){
+                if(password_verify($password, $fetch['mypassword'])){
+                  $_SESSION['username'] = $fetch['username'];
+                  $_SESSION['email'] = $fetch['email'];
+                  $_SESSION['User_id'] = $fetch['id'];
 
 
-            }else{
-              echo "<script>alert=('email is wrong')</script>";
-            }
-          
+                  // Warning: Cannot modify header information - headers already sent by 
+                  // (output started at /www/usr2345/htdocs/auth.php:52) in /www/usr2345/htdocs/index.php on line 100
+                      //ABOVE is an error that resulted to header having issues
+                  
+                  // header("location: ".BASEURL."");
+                  // header("location: index.php");
+                  //  header("Location:".BASEURL."/index.php");
+                  echo ("<script>location.href = '" . BASEURL . "/index.php;</script>");
+
+                  // NOTE THIS 4 HEADER WORK AS SAME IT IS JUST YOUR CHOICE 
+
+                  }else{
+                        echo "<script>alert=('email or password is wrong')</script>";
+                  }
+
+             }else{
+                echo "<script>alert=('emailis wrong')</script>";
+             }
       }
 
   }
