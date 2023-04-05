@@ -45,10 +45,10 @@
           <div class="container">
             <div class="row align-items-center justify-content-center text-center">
               <div class="col-md-10">
-                <span class="d-inline-block bg-<?php if($prop->_type == "rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->_type; ?> </span>
+                <span class="d-inline-block bg-<?php if($prop->home_type == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->home_type; ?> </span>
                 <h1 class="mb-2"><?php echo $prop->name; ?>  </h1>
                 <p class="mb-5"><strong class="h2 text-success font-weight-bold">$<?php echo $prop->price; ?></strong></p>
-                <p><a href="property-details.php?=id<?php echo $prop->id ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+                <p><a href="property-details.php?=id<?php echo $prop->_id ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
               </div>
             </div>
           </div>
@@ -111,10 +111,13 @@
                 </div>
               </div>
               <!-- END SEARCH CITY -->
-                            
+
+              <!-- SEARCH BTN -->
               <div class="col-md-3">
                 <input type="submit" name="submit" class="btn btn-success text-white btn-block rounded-0" value="Search">
               </div>
+              <!-- END OF SEARCH BTN -->
+              
             </div>
           </form>
         </div>  
@@ -163,15 +166,15 @@
           <?php foreach ($props as $prop): ?>
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
-              <a href="property-details.php?id=<?php echo $prop->id;?>" class="property-thumbnail">
+              <a href="property-details.php?id=<?php echo $prop->_id;?>" class="property-thumbnail">
                 <div class="offer-type-wrap">
-                  <span class="offer-type bg-<?php if($prop->_type == "rent"){ echo "success";}else{echo "danger";}?>"><?php echo $prop->home_type; ?></span>
+                  <span class="d-inline-block bg-<?php if($prop->home_type == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->home_type; ?> </span>
                 </div>
                 <img src="images/<?php echo $prop->image; ?>" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
-                <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-                <h2 class="property-title"><a href="property-details.php?id=<?php echo $prop->id; ?>"><?php echo $prop->name; ?></a></h2>
+                <a href="property-details.php?id=<?php echo $prop->_id ?>" class="property-favorite"><span class="icon-heart-o"></span></a>
+                <h2 class="property-title"><a href="property-details.php?id=<?php echo $prop->_id; ?>"><?php echo $prop->name; ?></a></h2>
                 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span><?php echo $prop->_location; ?></span>
                 <strong class="property-price text-primary mb-3 d-block text-success">$<?php echo $prop->price; ?></strong>
                 <ul class="property-specs-wrap mb-3 mb-lg-0">

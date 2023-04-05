@@ -31,7 +31,7 @@
                 if(password_verify($password, $fetch['mypassword'])){
                   $_SESSION['username'] = $fetch['username'];
                   $_SESSION['email'] = $fetch['email'];
-                  $_SESSION['User_id'] = $fetch['id'];
+                  $_SESSION['User_id'] = $fetch['_id'];
 
 
                   // Warning: Cannot modify header information - headers already sent by 

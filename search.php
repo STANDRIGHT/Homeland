@@ -21,10 +21,10 @@
         // $_SESSION['cities']= $_POST["cites"];
 
             // make queries
-            $search = $conn->query("SELECT * FROM props WHERE home_type LIKE '%$types%' OR _type LIKE '%$offers%' OR _location LIKE '%$cities$'");
-            $search->execute();
+        $search = $conn->query("SELECT * FROM props WHERE _type LIKE '%$types%' OR home_type LIKE '%$offers%' OR _location LIKE '%$cities$'");
+        $search->execute();
 
-            $listings = $search->fetchAll(PDO:: FETCH_ASSOC); //NOTE: Please always use PDO:: FETCH_ASSOC NOT // PDO:: FETCH_OBJ
+        $listings = $search->fetchAll(PDO:: FETCH_ASSOC); //NOTE: Please always use PDO:: FETCH_ASSOC NOT // PDO:: FETCH_OBJ
             // print_r($listings);
             // die();
     }else{
@@ -43,10 +43,10 @@
           <div class="container">
             <div class="row align-items-center justify-content-center text-center">
               <div class="col-md-10">
-                <span class="d-inline-block bg-<?php if($prop->_type == "rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->home_type; ?> </span>
+                <span class="d-inline-block bg-<?php if($prop->home_type == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->home_type; ?> </span>
                 <h1 class="mb-2"><?php echo $prop->name; ?>  </h1>
                 <p class="mb-5"><strong class="h2 text-success font-weight-bold">$<?php echo $prop->price; ?></strong></p>
-                <p><a href="property-details.php?=id<?php echo $prop->id ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+                <p><a href="property-details.php?=id<?php echo $prop->_id ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
               </div>
             </div>
           </div>
@@ -127,19 +127,19 @@
       <div class="container">
           <div class="row mb-5">
            <?php if (count($listings)> 0): ?>
-
+            
             <?php foreach ($listings as $listing) : ?>
               <div class="col-md-6 col-lg-4 mb-4" >
                 <div class="property-entry h-100">
-                  <a href="property-details.php?id=<?php echo $listing["id"]?> class="property-thumbnail">
+                  <a href="property-details.php?id=<?= $listing['_id'] ?>" class="property-thumbnail">
                     <div class="offer-type-wrap">
-                      <span class="offer-type d-inline-block bg-<?php if($listing['_type']== "rent"){echo "primary";}else{echo "danger";} ?> text-white px-3 mb-3 ml-3 property-offer-type rounded "><?php echo $listing['_type']; ?></span>
+                    <span class="d-inline-block bg-<?php if($listing["home_type"] == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $listing["home_type"]; ?> </span>
                     </div>
                     <img src="images/<?php echo $listing['image']; ?>" alt="Image" class="img-fluid">
                   </a>
                   <div class="p-4 property-body">
                     <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-                    <h2 class="property-title"><a href="property-details.php?id=<?php echo $listing["id"] ;?>"><?php echo $listing['name']; ?></a></h2>
+                    <h2 class="property-title"><a href="property-details.php?id=<?php echo $listing["_id"] ;?>"><?php echo $listing['name']; ?></a></h2>
                     <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span><?php echo $listing['_location']; ?></span>
                     <strong class="property-price text-primary mb-3 d-block text-success"><?php echo $listing['price']; ?></strong>
                     <ul class="property-specs-wrap mb-3 mb-lg-0">
@@ -167,7 +167,7 @@
 
             <?php else: ?>
               <div class="alert alert-danger" role="alert">
-                <h4 class="alert-heading font-weight-bold display-4">Hi, <?php echo strtolower($_SESSION['username']) ; ?></h4>
+                <h4 class="alert-heading font-weight-bold display-4">Hi, <?php if(isset($_SESSION['username'])){echo strtolower($_SESSION['username']) ;}else{ echo "User";}  ?></h4>
                 <p class="lead">We apologize that you were unable to find the property you were looking for on our website. 
                   We take great pride in providing a wide selection of properties to meet our clients' demands. </p>  
                       <hr>
