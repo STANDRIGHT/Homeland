@@ -16,9 +16,9 @@
         $offers = $_POST["offers"];
         $cities = $_POST["cites"];
 
-        $_SESSION['types']= $_POST["types"];
-        $_SESSION['offers']= $_POST["offers"];
-        $_SESSION['cities']= $_POST["cites"];
+        // $_SESSION['types']= $_POST["types"];
+        // $_SESSION['offers']= $_POST["offers"];
+        // $_SESSION['cities']= $_POST["cites"];
 
             // make queries
             $search = $conn->query("SELECT * FROM props WHERE home_type LIKE '%$types%' OR _type LIKE '%$offers%' OR _location LIKE '%$cities$'");
@@ -43,7 +43,7 @@
           <div class="container">
             <div class="row align-items-center justify-content-center text-center">
               <div class="col-md-10">
-                <span class="d-inline-block bg-<?php if($prop->_type == "rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->_type; ?> </span>
+                <span class="d-inline-block bg-<?php if($prop->_type == "rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->home_type; ?> </span>
                 <h1 class="mb-2"><?php echo $prop->name; ?>  </h1>
                 <p class="mb-5"><strong class="h2 text-success font-weight-bold">$<?php echo $prop->price; ?></strong></p>
                 <p><a href="property-details.php?=id<?php echo $prop->id ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>

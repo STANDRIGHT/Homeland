@@ -6,7 +6,7 @@
         $type = $_GET["type"];
 
         // query for type
-        $query = $conn->query("SELECT * FROM props WHERE _type='$type' ");
+        $query = $conn->query("SELECT * FROM props WHERE home_type='$type' ");
         $query->execute();
         $props = $query->fetchAll(PDO::FETCH_OBJ);
 
@@ -165,7 +165,7 @@
             <div class="property-entry h-100">
               <a href="property-details.php?id=<?php echo $prop->id;?>" class="property-thumbnail">
                 <div class="offer-type-wrap">
-                  <span class="offer-type bg-<?php if($prop->_type == "rent"){ echo "success";}else{echo "danger";}?>"><?php echo $prop->_type; ?></span>
+                  <span class="offer-type bg-<?php if($prop->_type == "rent"){ echo "success";}else{echo "danger";}?>"><?php echo $prop->home_type; ?></span>
                 </div>
                 <img src="images/<?php echo $prop->image; ?>" alt="Image" class="img-fluid">
               </a>
