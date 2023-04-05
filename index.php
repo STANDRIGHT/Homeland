@@ -12,7 +12,7 @@
 
         //Once the Get["type]  is in set it take u to the Rent or sale property
         echo "<script>window.location.href='#property'</script>";
-
+// this is sample
 
       }else if(isset($_GET['price'])){
         $price = $_GET["price"];
