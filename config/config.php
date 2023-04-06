@@ -5,17 +5,18 @@ try{
     //we need for constant to connect to our server or database.
 
     //host
-    define("HOSTNAME", "localhost");
+    if(!defined("HOSTNAME")) define("HOSTNAME", "localhost");
 
     //Database
-    define("DBNAME", "homeland");
+    if(!defined("DBNAME")) define("DBNAME", "homeland");
+ 
 
     //user
-    define("USER", "root");
+    if(!defined("USER")) define("USER", "root");
 
     //password
 
-    define("PASS", "");
+    if(!defined("PASS")) define("PASS", "");
 
     //we need to create an object to instantiate to PDO class that is built in PHP
     $conn = new PDO("mysql:host=".HOSTNAME."; dbname=".DBNAME.";", USER, PASS);

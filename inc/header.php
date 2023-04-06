@@ -1,7 +1,31 @@
 
-<?php 
+<?php
+
 define("BASEURL", "http://localhost/UDEMY%20COURSES/Homeland/");
 session_start();
+
+include dirname(dirname(__FILE__)) . "/Config/config.php";
+
+
+
+// echo __DIR__;
+//echo dirname(__FILE__);
+
+//NOTE: echo __DIR__ AND echo dirname(__FILE__) performs the same task so take note.. and the essence of this is when you include
+// file can not be found esppecially when u want to include your connection varrible inside your header.
+
+//echo dirname(dirname(__FILE__)); //THIS IS TO GET THE actual directory;
+
+// make query
+$categories= $conn->query("SELECT * from categories");
+$categories ->execute();
+
+
+// fetch as associative array
+$allcategories= $categories->fetchAll(PDO:: FETCH_ASSOC);
+print_r($allcategories);
+// die();
+
 
 ?>
 
@@ -66,9 +90,9 @@ session_start();
                   <li><a href="<?php echo BASEURL ?>/index.php?type=rent">Rent</a></li>
                   <li class="has-children"><a href="#">Properties</a>
                       <ul class="dropdown arrow-top">
-                        <li><a href="#">Condo</a></li>
-                        <li><a href="#">Property Land</a></li>
-                        <li><a href="#">Commercial Building</a></li>
+                        <?php foreach($allcategories as $category) :?>
+                          <li><a href="index.php?id=<?php echo $category["Pid"] ?>"><?php echo str_replace('-', ' ', $category["Pname"]) ;?></a></li>
+                        <?php endforeach ;?>
                       </ul>
                   </li>
 
