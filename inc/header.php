@@ -23,7 +23,7 @@ $categories ->execute();
 
 // fetch as associative array
 $allcategories= $categories->fetchAll(PDO:: FETCH_ASSOC);
-print_r($allcategories);
+// print_r($allcategories);
 // die();
 
 
@@ -91,7 +91,7 @@ print_r($allcategories);
                   <li class="has-children"><a href="#">Properties</a>
                       <ul class="dropdown arrow-top">
                         <?php foreach($allcategories as $category) :?>
-                          <li><a href="index.php?id=<?php echo $category["Pid"] ?>"><?php echo str_replace('-', ' ', $category["Pname"]) ;?></a></li>
+                          <li><a href="categories.php?menu=<?php echo str_replace('-', ' ',$category["Pname"])  ?>"><?php echo str_replace('-', ' ', $category["Pname"]) ;?></a></li>
                         <?php endforeach ;?>
                       </ul>
                   </li>

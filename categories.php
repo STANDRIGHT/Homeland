@@ -1,67 +1,43 @@
 <?php include "inc/header.php";?>
 <?php include "config/config.php";?>
 
-<?php
-  if(isset($_GET['type'])){
-    $type = $_GET["type"];
+<?php   
 
-    // query for type
-    $query = $conn->query("SELECT * FROM props WHERE home_type='$type' ");
-    $query->execute();
-    $props = $query->fetchAll(PDO::FETCH_OBJ);
+//make query
+  $select = $conn->query("SELECT * FROM props");
+  $select->execute();
 
-    //Once the Get["type]  is in set it take u to the Rent or sale property
-    echo "<script>window.location.href='#property'</script>";
-    // this is sample
+  //fetch-data
+  $props = $select->fetchAll(PDO::FETCH_ASSOC);
 
-  }else if(isset($_GET['price'])){
-    $price = $_GET["price"];
-    // query for price
-    $Pricequery = $conn->query("SELECT * FROM props ORDER BY price $price");
-    $Pricequery->execute();
-    $props = $Pricequery->fetchAll(PDO::FETCH_OBJ);
 
-    //Once the Get["type]  is in set it take u to the Rent or sale property
-    echo "<script>window.location.href='#property'</script>";
-
-  }else if(isset($_GET["menu"])){
-    $menu = $_GET["menu"];
+if(isset($_GET["menu"])){
+  $menu = $_GET["menu"];
+  // make query
+  $query =$conn->query("SELECT * FROM props WHERE _type= '$menu' ");
+  $query->execute();
   
-    // make query
-    $menuquery =$conn->query("SELECT * FROM props WHERE _type= '$menu' ");
-    $menuquery->execute();
-  
-    //fetch data as props
-    $props = $menuquery->fetchAll(PDO::FETCH_OBJ);
-    // echo "<script>window.location.href='#property'</script>";
+  //fetch data as props
+  $menufetch = $query->fetchAll(PDO::FETCH_OBJ);
+  echo "<script>window.location.href='#property'</script>";
 
-  }else{
-    //make query
-    $select = $conn->query("SELECT * FROM props");
-    $select->execute();
-
-    //fetch-data
-    $props = $select->fetchAll(PDO::FETCH_OBJ);
-  }
+}
 
 
-// print_r($us);
-// die();
-  // print_r($props);
 ?>
 
   
 
     <div class="slide-one-item home-slider owl-carousel">
       <?php foreach ($props as $prop): ?>
-        <div class="site-blocks-cover overlay" style="background-image: url(images/<?php echo $prop->image; ?>);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="site-blocks-cover overlay" style="background-image: url(images/<?php echo $prop["image"]; ?>);" data-aos="fade" data-stellar-background-ratio="0.5">
           <div class="container">
             <div class="row align-items-center justify-content-center text-center">
               <div class="col-md-10">
-                <span class="d-inline-block bg-<?php if($prop->home_type == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->home_type; ?> </span>
-                <h1 class="mb-2"><?php echo $prop->name; ?>  </h1>
-                <p class="mb-5"><strong class="h2 text-success font-weight-bold">$<?php echo $prop->price; ?></strong></p>
-                <p><a href="property-details.php?=id<?php echo $prop->_id ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+                <span class="d-inline-block bg-<?php if($prop["home_type"] == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop["home_type"]; ?> </span>
+                <h1 class="mb-2"><?php echo $prop["name"]; ?>  </h1>
+                <p class="mb-5"><strong class="h2 text-success font-weight-bold">$<?php echo $prop["price"]; ?></strong></p>
+                <p><a href="property-details.php?=id<?php echo $prop["_id"] ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
               </div>
             </div>
           </div>
@@ -176,34 +152,34 @@
     <div class="site-section site-section-sm bg-light" id="property">
       <div class="container">
         <div class="row mb-5">
-          <?php foreach ($props as $prop): ?>
+          <?php foreach ($menufetch as $fetch): ?>
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="property-entry h-100">
-              <a href="property-details.php?id=<?php echo $prop->_id;?>" class="property-thumbnail">
+              <a href="property-details.php?id=<?php echo $fetch->_id;?>" class="property-thumbnail">
                 <div class="offer-type-wrap">
-                  <span class="d-inline-block bg-<?php if($prop->home_type == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->home_type; ?> </span>
+                  <span class="d-inline-block bg-<?php if($fetch->home_type == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $fetch->home_type; ?> </span>
                 </div>
-                <img src="images/<?php echo $prop->image; ?>" alt="Image" class="img-fluid">
+                <img src="images/<?php echo $fetch->image; ?>" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
-                <a href="property-details.php?id=<?php echo $prop->_id ?>" class="property-favorite"><span class="icon-heart-o"></span></a>
-                <h2 class="property-title"><a href="property-details.php?id=<?php echo $prop->_id; ?>"><?php echo $prop->name; ?></a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span><?php echo $prop->_location; ?></span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$<?php echo $prop->price; ?></strong>
+                <a href="property-details.php?id=<?php echo $fetch->_id ?>" class="property-favorite"><span class="icon-heart-o"></span></a>
+                <h2 class="property-title"><a href="property-details.php?id=<?php echo $fetch->_id; ?>"><?php echo $fetch->name; ?></a></h2>
+                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span><?php echo $fetch->_location; ?></span>
+                <strong class="property-price text-primary mb-3 d-block text-success">$<?php echo $fetch->price; ?></strong>
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
                   <li>
                     <span class="property-specs">Beds</span>
-                    <span class="property-specs-number"><?php echo $prop->beds; ?> <sup>+</sup></span>
+                    <span class="property-specs-number"><?php echo $fetch->beds; ?> <sup>+</sup></span>
                     
                   </li>
                   <li>
                     <span class="property-specs">Baths</span>
-                    <span class="property-specs-number"><?php echo $prop->bath; ?></span>
+                    <span class="property-specs-number"><?php echo $fetch->bath; ?></span>
                     
                   </li>
                   <li>
                     <span class="property-specs">SQ FT</span>
-                    <span class="property-specs-number"><?php echo $prop->sq_ft; ?></span>
+                    <span class="property-specs-number"><?php echo $fetch->sq_ft; ?></span>
                     
                   </li>
                 </ul>

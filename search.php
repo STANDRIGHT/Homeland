@@ -70,9 +70,9 @@
                 <div class="select-wrap">
                   <span class="icon icon-arrow_drop_down"></span>
                   <select name="types" id="list-types" class="form-control d-block rounded-0">
-                    <option value="Condo">Condo</option>
-                    <option value="Commercial Building">Commercial Building</option>
-                    <option value="Land Property">Land Property</option>
+                    <?php foreach($allcategories as $category) :?>
+                        <option value="<?php echo str_replace('-', ' ', $category["Pname"]) ;?>"><?php echo $category["Pname"] ;?></option>
+                      <?php endforeach ;?>
                   </select>
                 </div>
               </div>
