@@ -26,11 +26,16 @@
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
           //make query using PDO
           $insert  = $conn->prepare("INSERT INTO users (username, email, mypassword) VALUES(:username, :email, :mypassword)");
-          $insert->execute([
+          $insert->execute(array(
             ':username'=> $username,
             ':email' => $email,
             ':mypassword' => password_hash($password, PASSWORD_DEFAULT)
-          ]);
+          ));
+
+          // if ($insert->rowcount()) {
+          //   $last_id= $conn->lastInsertId();
+          //   echo $last_id;
+          // }
           
           // header("Location:".BASEURL."/login.php");
           echo ("<script>location.href = '" . BASEURL . "/login.php</script>");

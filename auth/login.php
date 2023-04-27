@@ -41,7 +41,7 @@
                   // header("location: ".BASEURL."");
                   // header("location: index.php");
                   //  header("Location:".BASEURL."/index.php");
-                  echo ("<script>location.href = '" . BASEURL . "/index.php;</script>");
+                  echo ("<script>location.href = '" . BASEURL . "index.php;</script>");
 
                   // NOTE THIS 4 HEADER WORK AS SAME IT IS JUST YOUR CHOICE 
 

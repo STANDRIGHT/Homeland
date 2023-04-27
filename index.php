@@ -42,16 +42,18 @@
 
     //fetch-data
     $props = $select->fetchAll(PDO::FETCH_OBJ);
+
   }
+ 
 
 
 // print_r($us);
 // die();
   // print_r($props);
+
 ?>
 
   
-
     <div class="slide-one-item home-slider owl-carousel">
       <?php foreach ($props as $prop): ?>
         <div class="site-blocks-cover overlay" style="background-image: url(images/<?php echo $prop->image; ?>);" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -186,7 +188,6 @@
                 <img src="images/<?php echo $prop->image; ?>" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
-                <a href="property-details.php?id=<?php echo $prop->_id ?>" class="property-favorite"><span class="icon-heart-o"></span></a>
                 <h2 class="property-title"><a href="property-details.php?id=<?php echo $prop->_id; ?>"><?php echo $prop->name; ?></a></h2>
                 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span><?php echo $prop->_location; ?></span>
                 <strong class="property-price text-primary mb-3 d-block text-success">$<?php echo $prop->price; ?></strong>

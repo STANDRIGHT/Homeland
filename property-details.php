@@ -42,13 +42,23 @@
     $properties= $Relateprops->fetchAll(PDO:: FETCH_OBJ);
     // print_r($properties);
     // die();
-  
+
+
+    //make query for add to  favourite table
+    $fav =$conn->query("SELECT * FROM addfav WHERE prop_id ='$id' AND user_id='$_SESSION[User_id]'");
+    $fav->execute();
+
+    //fetch all data
+    $fetch_fav =$fav ->fetch(PDO:: FETCH_OBJ);
+    // print_r($fetch_fav);
+
+
 
 ?>
 
 
     <!-- FIRST IMAGE VIEW -->
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/<?php echo $fetchdetails->image ?>);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image:url(images/<?php echo $fetchdetails->image ?>);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
@@ -172,40 +182,73 @@
           </div>
           <div class="col-lg-4">
           
-          <!-- FORM CONTACT -->
+            <!-- FORM CONTACT -->
             <div class="bg-white widget border rounded">
-
               <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
-              <form action="" class="form-contact-agent">
+              <form action="request/process-request.php" method="POST" class="form-contact-agent">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" id="name" class="form-control">
+                  <input type="text" name="Requestname" id="Requestname" class="form-control">
                 </div>
+
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" id="email" class="form-control">
+                  <input type="email" name="Requestemail" id="Requestemail" class="form-control">
                 </div>
+
                 <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="text" id="phone" class="form-control">
+                  <input type="text" id="phone" name="Requestphone" class="form-control">
                 </div>
+
                 <div class="form-group">
-                  <input type="submit" id="phone" class="btn btn-primary" value="Send Message">
+                  <input type="submit" name="submit" id="phone" class="btn btn-primary" value="Send Message">
                 </div>
               </form>
             </div>
-          <!-- END OF FORM CONTACT -->
+            <!-- END OF FORM CONTACT -->
 
-          <!-- SOCIAL MEDIA HANDLES -->
-            <div class="bg-white widget border rounded">
-              <h3 class="h4 text-black widget-title mb-3 ml-0">Share</h3>
-                  <div class="px-3" style="margin-left: -15px;">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=&quote=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
-                    <a  href="https://twitter.com/intent/tweet?text=&url=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>    
-                  </div>            
-            </div>
-          <!-- END OF SOCIAL MEDIA HANDLES -->
+            <!-- SOCIAL MEDIA HANDLES -->
+              <div class="bg-white widget border rounded">
+                <h3 class="h4 text-black widget-title mb-3 ml-0">Share</h3>
+                    <div class="px-3" style="margin-left: -15px;">
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=&quote=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
+                      <a  href="https://twitter.com/intent/tweet?text=&url=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
+                      <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>    
+                    </div>            
+              </div>
+            <!-- END OF SOCIAL MEDIA HANDLES -->
+
+
+              <!-- FAVOURITE LINK -->
+              <div class="bg-white widget border rounded">
+                <form action="addfav.php" method="POST" class="form-contact-agent">
+                  <h3 class="h4 text-black widget-title mb-3">Add this to Favourite</h3>
+                  <div class="form-group">
+                    <!-- <label for="name">prop_id</label> -->
+                    <input type="text"  name="prop_id" value="<?php echo $id ; ?>" class="form-control">
+                  </div>
+                
+                  <div class="form-group">
+                    <!-- <label for="name">user_id</label> -->
+                      <input type="text" name="user_id" class="form-control"  value="<?php echo $_SESSION['User_id']; ?>">                                  
+                  </div>
+
+                  <?php if($fav->rowcount()>0) :?>
+                    <div class="form-group">
+                      <a href="fav_delete.php?prop_id=<?php echo $id; ?>&fav_user=<?php echo $_SESSION['User_id']; ?>"  class='btn btn-success text-white'>Added to Favourite</a>
+                    </div>
+
+                   <?php else : ?>
+                    <div class="form-group">
+                      <!-- <a href="addfav.php"  class="btn btn-primary text-white">Add to Favourite</a> -->
+                      <input type="submit" name="submit" class="btn btn-primary" value="Add to Favourite">
+                    </div>
+                  <?php endif ; ?>
+
+                </form>
+                <!-- END OF FAVOURITE LINK HANDLES -->
+              </div>
 
           </div>
           
