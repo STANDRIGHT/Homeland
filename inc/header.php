@@ -1,9 +1,8 @@
 
 <?php
 
-define("BASEURL", "http://localhost/UDEMY%20COURSES/Homeland/");
+define("BASEURL", "http://localhost/Builders/Homeland/");
 session_start();
-
 include dirname(dirname(__FILE__)) . "/Config/config.php";
 
 
@@ -32,7 +31,7 @@ $allcategories= $categories->fetchAll(PDO:: FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Homeland &mdash; Colorlib Website Template</title>
+    <title>Homeland &mdash; Standright House</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
