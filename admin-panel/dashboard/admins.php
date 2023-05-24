@@ -6,7 +6,6 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Admin Panel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -31,6 +30,8 @@
                     <th scope="col">#</th>
                     <th scope="col">username</th>
                     <th scope="col">email</th>
+                    <th scope="col">Delete</th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -38,18 +39,24 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
+                    <td><a  href="delete-admin.php" class="btn btn-danger mb-4 text-center">Delete</a></td>
+
                    
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
+                    <td><a  href="delete-admin.php" class="btn btn-danger mb-4 text-center ">Delete</a></td>
+
                    
                   </tr>
                   <tr>
                     <th scope="row">3</th>
                     <td>Larry</td>
                     <td>the Bird</td>
+                    <td><a href="delete-admin.php" class="btn btn-danger mb-4 text-center ">Delete</a></td>
+
                    
                   </tr>
                 </tbody>

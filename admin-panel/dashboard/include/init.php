@@ -11,6 +11,7 @@ require "tables.php";
 require "class.php";
 $db=new Database();
 $app=new admin();
+$gories=new categories();
 
 
 
