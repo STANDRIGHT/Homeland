@@ -12,6 +12,7 @@ require "class.php";
 $db=new Database();
 $app=new admin();
 $gories=new categories();
+$quest=new request();
 
 
 

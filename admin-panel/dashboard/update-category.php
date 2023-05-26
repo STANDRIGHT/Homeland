@@ -39,11 +39,9 @@ $singleCategories = $gories->singleCategories($id);
               <form method="POST" action="../processor/Pupdate-category.php?">
                 <!-- Email input -->
                 <div class="form-outline mb-4 mt-4">
-                <?php //foreach ($singleCategories as $single) : ?>
                   <input type="hidden" name="id" value="<?= $singleCategories->Pid ?>" />
                   <input type="text" name="name" id="name" class="form-control" placeholder="name" value="<?= $singleCategories->Pname; ?>" />
                 </div>
-                <?php //endforeach; ?>
 
                 <!-- Submit button -->
                 <button type="submit" name="update" class="btn btn-primary  mb-4 text-center">Update</button>

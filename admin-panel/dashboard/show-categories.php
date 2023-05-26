@@ -30,20 +30,22 @@ $allcategories = $gories->showCategoies();
         <div class="col">
           <div class="card">
             <div class="card-body">
+            <?php if(isset($_SESSION['delete-message'])){ echo $_SESSION['delete-message']; unset($_SESSION['delete-message']); } ?>
+
             <?php if(isset($_SESSION['Return-message'])){ echo $_SESSION['Return-message']; unset($_SESSION['Return-message']); } ?>
               <h5 class="card-title mb-4 d-inline">Categories</h5>
               <a href="create-category.php" class="btn btn-primary mb-4 text-center float-right">Create Categories</a>              
-              <table class="table">
-                <thead>
+              <table class="table  table-hover">
+                <thead class="thead-dark ">
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">S/n</th>
                     <th scope="col">Name</th>
                     <th scope="col">Created At</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class=""></tbody>
                   <?php $sn=1; foreach ($allcategories as $allcategory) : ?>
                     <tr>
                       <th scope="row"><?= $sn ?></th>

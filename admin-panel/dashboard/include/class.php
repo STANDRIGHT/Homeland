@@ -119,15 +119,47 @@ class categories extends Database{
         $update->execute();
 
         if($update == true){
-            $resp = array('status'=>1, 'message'=>'Update successful');
+            $resp= array('status'=>1, 'message'=>'Update successful');
 
         }else{
-            $resp =['status'=>0, 'message'=>'Error in creating category'];
+            $resp=['status'=>0, 'message'=>'Error in creating category'];
         }
 
         return $resp; 
-
     }
+
+    //Delete Category
+    public function delete($id){
+        $delete =$this->prepare("DELETE FROM ".TBL_CATEGORIES." WHERE Pid=:id");
+        $delete->bindParam(':id', $id);
+        if($delete->execute()==true){
+            
+            $resp=['status'=>1, 'message'=>'successfully deleted'];
+
+        }else{
+            $resp=['status'=>0, 'message'=>'Failed to delete'];
+
+        }
+
+        return $resp;
+    }
+}
+
+
+//make request for clients
+class  request  extends Database {
+    public function request(){
+        $request=$this->prepare("SELECT _id as Rid, _name as Rname, email as Remail, phone as Rphone, created_at as Rcreated_at
+          FROM ".TBL_REQUEST." ");
+        $request->execute();
+
+        $allrequest=$request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $allrequest;
+    }
+
+    
+
 }
 
 
