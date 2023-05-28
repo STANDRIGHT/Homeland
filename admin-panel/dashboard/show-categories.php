@@ -16,7 +16,7 @@ $allcategories = $gories->showCategoies();
   <title>Admin Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-  <link href="styles/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
@@ -47,7 +47,7 @@ $allcategories = $gories->showCategoies();
                 </thead>
                 <tbody class=""></tbody>
                   <?php $sn=1; foreach ($allcategories as $allcategory) : ?>
-                    <tr>
+                    <tr> 
                       <th scope="row"><?= $sn ?></th>
                       <td><?= $allcategory->_Pname ?></td>
                       <td><?= $allcategory->_created_at ?></td>
@@ -61,10 +61,9 @@ $allcategories = $gories->showCategoies();
           </div>
         </div>
       </div>
-
-
-
     </div>
+    
+  </div>
     <?php include "component/footer.php" ?>
 
 </body>

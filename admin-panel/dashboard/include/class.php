@@ -43,6 +43,33 @@ class admin extends Database
 
     }
 
+    public function getAdmins(){
+        $stmt =$this->prepare("SELECT _id  AS Aid, adminName AS AadminName, _email as Aemail, _password AS Apassword,
+        _status AS Astatus, AdminCategory AS AAdminCategory, created_at AS Acreated_at FROM ".TBL_ADMIN." ");
+        $stmt->execute();
+        $admins=$stmt->fetchAll(PDO:: FETCH_OBJ);
+
+        return $admins;
+    }
+
+    //fecting single admin i.e the master admin
+    public function singleAdmin(){
+        $stmt =$this->prepare("SELECT _id  AS Aid, adminName AS AadminName, _email as Aemail, _password AS Apassword,
+        _status AS Astatus, AdminCategory AS AAdminCategory, created_at AS Acreated_at FROM ".TBL_ADMIN."
+        WHERE AdminCategory='Master' ");
+        $stmt->execute();
+
+        if($Admin=$stmt->fetch(PDO:: FETCH_ASSOC)){
+            $singleAdmin =$Admin;
+            
+            $_SESSION["master"]=$singleAdmin;
+        }
+        
+
+        return $_SESSION["master"];
+    }
+
+
     public function countProps(){
         $stmt = $this->prepare("SELECT count(*) AS totalProps FROM ".TBL_PROPS." ");
         $stmt->execute();
@@ -146,7 +173,27 @@ class categories extends Database{
 }
 
 
-//make request for clients
+
+//CLASS FOR PROPERTIES
+class properties extends Database{
+    public function props(){
+        //make query for properties
+        $properties=$this->prepare("SELECT _id as Pid, name as Pname, _location as Plocation, price as Pprice, image as Pimage,
+        beds as Pbeds, bath as Pbath, sq_ft as Psq_ft, home_type as Phometype, _type as Ptype, year_built as Pyear_built, 
+        price_sqft as Pprice_sqft, description	as Pdescription, admin_name as Padmin_name, created_at as Pcreated_at
+        FROM ".TBL_PROPERTIES." ");
+        $properties->execute();
+
+        //fecth date
+        $allproperties=$properties->fetchAll(PDO::FETCH_OBJ);
+
+        return $allproperties;
+    }
+}
+
+
+
+//REQUEST CLASS for clients
 class  request  extends Database {
     public function request(){
         $request=$this->prepare("SELECT _id as Rid, _name as Rname, email as Remail, phone as Rphone, created_at as Rcreated_at

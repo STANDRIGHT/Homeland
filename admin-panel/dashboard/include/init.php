@@ -13,6 +13,7 @@ $db=new Database();
 $app=new admin();
 $gories=new categories();
 $quest=new request();
+$perties=new properties();
 
 
 

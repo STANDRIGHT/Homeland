@@ -177,6 +177,7 @@
 <!-- CARD START'S HERE -->
     <div class="site-section site-section-sm bg-light" id="property">
       <div class="container">
+        <div class="card">
         <div class="row mb-5">
           <?php foreach ($props as $prop): ?>
           <div class="col-md-6 col-lg-4 mb-4">
@@ -213,6 +214,7 @@
             </div>
           </div>
           <?php endforeach; ?>
+        </div>
         </div>
       </div>
     </div>

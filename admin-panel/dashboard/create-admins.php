@@ -1,58 +1,63 @@
-<?php include("include/session.php") ;?>
-<?php include "component/header.php" ?>
+<?php include("include/session.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Admin Panel</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/style.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <title>Admin Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<div id="wrapper">
-  
-    <div class="container-fluid">
-       <div class="row">
-        <div class="col">
+  <div id="wrapper">
+  <?php include "component/header.php" ?>
+
+    <div class="container">
+      <div class="row w-50 m-auto">
+        <div class="col ">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title mb-5 d-inline">Create Admins</h5>
-          <form method="POST" action="" enctype="multipart/form-data">
+              <nav aria-label="..." class="float-right">
+                <ul class="pagination ">
+                  <li class="page-item">
+                    <a class="page-link" href="admins.php">Back</a>
+                  </li>
+                </ul>
+              </nav>
+
+              <form method="POST" action="../processor/padmin.php">
                 <!-- Email input -->
                 <div class="form-outline mb-4 mt-4">
-                  <input type="email" name="email" id="form2Example1" class="form-control" placeholder="email" />
-                 
+                  <input type="email" name="email" id="form2Example1" class="form-control" placeholder="Email" />
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" name="username" id="form2Example1" class="form-control" placeholder="username" />
+                  <input type="text" name="username" id="form2Example1" class="form-control" placeholder="Username" />
                 </div>
+
                 <div class="form-outline mb-4">
-                  <input type="password" name="password" id="form2Example1" class="form-control" placeholder="password" />
+                  <input type="password" name="password" id="form2Example1" class="form-control" placeholder="Password" />
                 </div>
-
-               
-            
-                
-              
-
 
                 <!-- Submit button -->
-                <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">create</button>
-
-          
+                <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Create</button>
               </form>
 
             </div>
           </div>
         </div>
       </div>
-  </div>
-  <?php include "component/footer.php" ?>
+    </div>
 
+  </div>
+
+  <?php include "component/footer.php" ?>
 </body>
+
 </html>

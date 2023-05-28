@@ -1,3 +1,4 @@
+
 <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">LOGO</a>
@@ -12,15 +13,19 @@
             <span class="sr-only">(current)</span>
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="admins.php" style="margin-left: 20px;">Admins</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="show-categories.php" style="margin-left: 20px;">Categories</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="show-properties.php" style="margin-left: 20px;">Properties</a>
         </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="show-requests.php" style="margin-left: 20px;">Requests</a>
         </li>
@@ -37,11 +42,11 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="logout.php">Logout</a>
-            <a class="dropdown-item" href="javascript:void(0)">Notification  <span class="badge badge-danger">4</span>
-</a>
+            <a class="dropdown-item" href="javascript:void(0)">Notification <span class="badge badge-danger">4</span>
+            </a>
 
           </div>
-<!-- 
+          <!-- 
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            
 
