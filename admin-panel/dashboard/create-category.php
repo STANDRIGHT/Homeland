@@ -18,31 +18,47 @@
 
     <?php include "component/header.php" ?>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-          <div class="card">
+    
+
+  <div class="container">
+      <div class="row ">
+        <div class="col-md-8 col-lg-6 mb-6 m-auto">
+          <div class="card  bg-dark">
             <div class="card-body">
-              <h5 class="card-title mb-5 d-inline">Create Categories</h5>
+              <h5 class="card-title mb-5 d-inline text-white">Create Categories</h5>
+              <nav aria-label="..." class="float-right">
+                <ul class="pagination ">
+                  <li class="page-item">
+                    <a class="page-link" href="show-categories.php">Back</a>
+                  </li>
+                </ul>
+              </nav>
               <br>
               <?php if(isset($_SESSION['msg'])){ echo $_SESSION['msg']; unset($_SESSION['msg']); } ?>
+             
 
               <form method="POST" action="../processor/Pcategory.php">
                 <!-- Email input -->
                 <div class="form-outline mb-4 mt-4">
-                  <input type="text" name="name" id="name" class="form-control" placeholder="name" />
+                  <input type="text" name="name" id="name" class="form-control" placeholder="Name" />
                 </div>
                 <!-- Submit button -->
-                <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">create</button>
+                <button type="submit" name="submit" class="btn btn-info  mb-4 text-center">Create</button>
               </form>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+
+   
+
+
+
+
   </div>
   <?php include "component/footer.php" ?>
-
 
 
 

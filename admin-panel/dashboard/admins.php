@@ -86,7 +86,7 @@ $_SESSION["master"] = $app->singleAdmin();
           <div class="card rounded shadow border-0">
             <div class="card-body p-5 bg-white rounded">
               <h5 class="card-title mb-4 d-inline">ADMINS</h5>
-              <a href="create-admins.php" class="btn btn-primary mb-4 text-center float-right">Create Admins</a>
+              <a href="create-admins.php" class="btn btn-info mb-4 text-center float-right">Create Admins</a>
               <div class="table-responsive">
                 <table style="width:100%" class="table table-striped table-bordered table-hover  ">
                   <thead class="thead-dark">

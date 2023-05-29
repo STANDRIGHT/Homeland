@@ -18,15 +18,15 @@
   <?php include "component/header.php" ?>
 
     <div class="container">
-      <div class="row w-50 m-auto">
-        <div class="col ">
-          <div class="card">
+      <div class="row w-70 m-auto">
+        <div class="col-md-8 col-lg-6 mb-8 m-auto">
+          <div class="card  bg-dark">
             <div class="card-body">
-              <h5 class="card-title mb-5 d-inline">Create Admins</h5>
+              <h5 class="card-title mb-5 d-inline text-white">Create Admin</h5>
               <nav aria-label="..." class="float-right">
                 <ul class="pagination ">
                   <li class="page-item">
-                    <a class="page-link" href="admins.php">Back</a>
+                    <a class="page-link text-dark font-weight-bold" href="admins.php">Back</a>
                   </li>
                 </ul>
               </nav>
@@ -46,7 +46,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Create</button>
+                <button type="submit" name="submit" class="btn btn-info  mb-4 text-center font-weight-bold">Create</button>
               </form>
 
             </div>
@@ -54,6 +54,7 @@
         </div>
       </div>
     </div>
+
 
   </div>
 
