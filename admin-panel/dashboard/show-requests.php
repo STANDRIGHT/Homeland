@@ -78,11 +78,11 @@ if (isset($_GET["return"])) {
                         <td><?php echo $request["Rname"]; ?></td>
                         <td><?php echo $request["Remail"]; ?></td>
                         <td><?php echo $request["Rphone"]; ?></td>
-                        <td><a href="mailto:<?php echo $request["Remail"]; ?>" class="btn btn-info text-center "><i class="fa-solid fa-envelope fa-beat fa-lg"></i> Send mail</a></td>
+                        <td><a href="mailto:<?php echo $request["Remail"]; ?>" data-tip="send mail" class="btn btn-info text-center "><i class="fa-solid fa-envelope fa-beat fa-lg"></i> Send mail</a></td>
                         <td>
                           <ul class="action-list">
                             <!-- <li><a href="edit-request.php?id=<?= $request['Rid'] ?>" data-tip="edit"><i class="fa fa-edit"></i></a></li> -->
-                            <li><a href="delete-request.php?id=<?= $request['Rid'] ?>" data-tip="delete"><i class="fa-solid fa-trash  fa-xl " style="color: #862e09;"></i> </a></li>
+                            <li><a href="delete-request.php?id=<?= $request['Rid'] ?>" data-tip="delete" class="btn btn-danger text-center"><i class="fa-solid fa-trash  fa-xl " style="color: #fff;"></i> Delete</a></li>
                           </ul>
                         </td>
                       </tr>

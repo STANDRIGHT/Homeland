@@ -45,12 +45,15 @@
 
 
     //make query for add to  favourite table
-    $fav =$conn->query("SELECT * FROM addfav WHERE prop_id ='$id' AND user_id='$_SESSION[User_id]'");
-    $fav->execute();
+    if(isset($_SESSION['User_id'])){
+      $fav =$conn->query("SELECT * FROM addfav WHERE prop_id ='$id' AND user_id='$_SESSION[User_id]'");
+      $fav->execute();
 
-    //fetch all data
-    $fetch_fav =$fav ->fetch(PDO:: FETCH_OBJ);
-    // print_r($fetch_fav);
+      //fetch all data
+      $fetch_fav =$fav ->fetch(PDO:: FETCH_OBJ);
+      // print_r($fetch_fav);
+
+    }
 
 
 
@@ -140,42 +143,7 @@
                   <div class="col-sm-6 col-md-4 col-lg-3">
                       <a href="gallary/<?php echo $gala->images?>?id=<?php echo $gala->_id?>" class="image-popup gal-item"><img src="gallary/<?php echo $gala->images?>" alt="Image" class="img-fluid"></a>
                   </div>
-                <?php endforeach ;?>
-
-                
-                <!-- <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_2.jpg" class="image-popup gal-item"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_3.jpg" class="image-popup gal-item"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_4.jpg" class="image-popup gal-item"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_5.jpg" class="image-popup gal-item"><img src="images/img_5.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_6.jpg" class="image-popup gal-item"><img src="images/img_6.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_7.jpg" class="image-popup gal-item"><img src="images/img_7.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_8.jpg" class="image-popup gal-item"><img src="images/img_8.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_1.jpg" class="image-popup gal-item"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_2.jpg" class="image-popup gal-item"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_3.jpg" class="image-popup gal-item"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_4.jpg" class="image-popup gal-item"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                </div> -->
+                <?php endforeach ;?>                             
               
               </div>
             </div>
@@ -231,12 +199,12 @@
                 
                   <div class="form-group">
                     <!-- <label for="name">user_id</label> -->
-                      <input type="text" name="user_id" class="form-control"  value="<?php echo $_SESSION['User_id']; ?>">                                  
+                      <input type="text" name="user_id" class="form-control"  value="<?php if(isset($_SESSION["User_id"])){ echo $_SESSION['User_id'];}  ?>">                                  
                   </div>
 
                   <?php if($fav->rowcount()>0) :?>
                     <div class="form-group">
-                      <a href="fav_delete.php?prop_id=<?php echo $id; ?>&fav_user=<?php echo $_SESSION['User_id']; ?>"  class='btn btn-success text-white'>Added to Favourite</a>
+                      <a href="fav_delete.php?prop_id=<?php echo $id; ?>&fav_user=<?php if(isset($_SESSION["User_id"])){ echo $_SESSION['User_id'];}  ?>"  class='btn btn-success text-white'>Added to Favourite</a>
                     </div>
 
                    <?php else : ?>

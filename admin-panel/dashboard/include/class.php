@@ -1,6 +1,31 @@
 <?php
 class admin extends Database
 {
+
+    public function register($email, $username, $password){
+      $stmt=$this->prepare("SELECT _id as Rid, _email as Remail, _password as Rpassword, FROM ".TBL_ADMIN." WHERE _email:$email ");
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':username', $username);
+      $stmt->bindParam(':password', $password);
+      $stmt->execute();
+
+      if($stmt->rowCount()>0){
+        $resp=["status"=>0, "message"=>"Email already exit"];
+      }else{
+        $row=$stmt->fetch(PDO:: FETCH_OBJ);
+        if(!password_hash($row->_password, PASSWORD_DEFAULT)){
+            $resp=['status'=>0, 'message'=>'Incorrect Password'];
+
+        }elseif(!filter_var($row->_email, FILTER_VALIDATE_EMAIL)){
+            $resp=["status"=>0, "message" =>"Email not valid" ];
+
+        }
+
+      }
+      return $resp;    
+
+    }
+
     public function login($email, $password)
     {
         $stmt = $this->prepare("SELECT _id, _password, _status FROM " . TBL_ADMIN . " WHERE _email=:email");

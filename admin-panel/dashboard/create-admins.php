@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" name="password" id="form2Example1" class="form-control" placeholder="Password" />
+                  <input type="password" name="username" id="form2Example1" class="form-control" placeholder="Password" />
                 </div>
 
                 <!-- Submit button -->

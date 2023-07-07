@@ -72,7 +72,7 @@ $allproperties = $perties->props();
                         <td><?= $props->Pcreated_at ?></td>
                         <td>
                           <ul class="action-list">
-                            <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
+                            <li><a href="#" data-tip="edit"><i class="fa fa-edit" style="color:blue;"></i></a></li>
                             <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
                           </ul>
                         </td>
