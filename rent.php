@@ -44,7 +44,7 @@ if(isset($_GET["id"])){
                         <p class="mb-5"><strong class="h2 text-success font-weight-bold">$
                                 <?php echo $prop->price; ?>
                             </strong></p>
-                        <p><a href="property-details.php?=id<?php echo $prop->id; ?>"
+                        <p><a href="property-details.php?id=<?php echo $prop->id; ?>"
                                 class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
                     </div>
                 </div>

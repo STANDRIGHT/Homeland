@@ -63,7 +63,7 @@
                 <span class="d-inline-block bg-<?php if($prop->home_type == "Rent"){ echo "success";}else{echo "danger";}?> text-white px-3 mb-3 property-offer-type rounded"><?php echo $prop->home_type; ?> </span>
                 <h1 class="mb-2"><?php echo $prop->name; ?>  </h1>
                 <p class="mb-5"><strong class="h2 text-success font-weight-bold">$<?php echo $prop->price; ?></strong></p>
-                <p><a href="property-details.php?=id<?php echo $prop->_id ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+                <p><a href="property-details.php?id=<?php echo $prop->_id ; ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
               </div>
             </div>
           </div>
