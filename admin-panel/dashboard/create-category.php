@@ -18,9 +18,9 @@
 
     <?php include "component/header.php" ?>
 
-    
 
-  <div class="container">
+
+    <div class="container">
       <div class="row ">
         <div class="col-md-8 col-lg-6 mb-6 m-auto">
           <div class="card  bg-dark">
@@ -34,8 +34,12 @@
                 </ul>
               </nav>
               <br>
-              <?php if(isset($_SESSION['msg'])){ echo $_SESSION['msg']; unset($_SESSION['msg']); } ?>
-             
+              <br>
+                <?php if (isset($_SESSION["Return-message"])) {
+                  echo  $_SESSION["Return-message"];
+                  unset($_SESSION["Return-message"]);
+                } ?>
+
 
               <form method="POST" action="../processor/Pcategory.php">
                 <!-- Email input -->
@@ -52,7 +56,7 @@
       </div>
     </div>
 
-   
+
 
 
 

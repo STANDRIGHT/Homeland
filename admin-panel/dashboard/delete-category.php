@@ -9,7 +9,7 @@ if(isset($_GET["id"])){
 
     if($resp["status"] ===1){
         header("location:show-categories.php");
-        $_SESSION["delete-message"] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        $_SESSION["Return-message"] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Hello!  ' . $userProfile->_adminName . '</strong> Record Sucessfully Deleted.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>

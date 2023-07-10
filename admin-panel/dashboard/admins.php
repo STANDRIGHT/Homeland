@@ -3,12 +3,22 @@
 <?php
 $admins = $app->getAdmins();
 
-$_SESSION["master"] = $app->singleAdmin();
+// $_SESSION["master"] = $app->singleAdmin();
 // print json_encode( $_SESSION["master"]);
 
 // die();
 
 // print_r($singleAdmin);
+
+
+//counting properties
+$allprops= $app->countProps();
+
+//counting categories
+$allcat = $app->countCat();
+
+//counting admins
+$alladmin= $app->countAmin();
 
 
 ?>
@@ -50,8 +60,7 @@ $_SESSION["master"] = $app->singleAdmin();
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Properties</h5>
-              <p class="card-text">number of properties: </p>
-
+              <p class="card-text">number of Properties: <?php echo $allprops->totalProps ?> </p>
             </div>
           </div>
         </div>
@@ -59,7 +68,7 @@ $_SESSION["master"] = $app->singleAdmin();
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Categories</h5>
-              <p class="card-text">number of categories:></p>
+              <p class="card-text">number of categories: <?= $allcat->totalcat ?></p>
 
             </div>
           </div>
@@ -68,7 +77,7 @@ $_SESSION["master"] = $app->singleAdmin();
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Admins</h5>
-              <p class="card-text">number of admins:</p>
+              <p class="card-text">number of admins: <?= $alladmin->totaladmin ?></p>
             </div>
           </div>
         </div>

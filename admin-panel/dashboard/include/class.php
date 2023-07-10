@@ -77,6 +77,9 @@ class admin extends Database
         return $admins;
     }
 
+
+
+    
     //fecting single admin i.e the master admin
     public function singleAdmin(){
         $stmt =$this->prepare("SELECT _id  AS Aid, adminName AS AadminName, _email as Aemail, _password AS Apassword,

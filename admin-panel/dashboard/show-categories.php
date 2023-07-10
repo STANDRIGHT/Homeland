@@ -37,48 +37,18 @@ $allcategories = $gories->showCategoies();
   <div id="wrapper">
 
     <?php include "component/header.php" ?>
+  
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Properties</h5>
-              <p class="card-text">number of properties: </p>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Categories</h5>
-              <p class="card-text">number of categories:></p>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Admins</h5>
-              <p class="card-text">number of admins:</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-    <div class="container-fluid">
-
       <div class="row  ">
         <div class="col-lg-12 mx-auto">
-
           <div class="card rounded shadow border-0">
             <div class="card-body p-5 bg-white rounded">
+            <?php if(isset($_SESSION["Return-message"])){
+              echo  $_SESSION["Return-message"];
+              unset($_SESSION["Return-message"]);
+            } ?>
+
               <h5 class="card-title mb-4 d-inline">Category</h5>
               <a href="create-category.php" class="btn btn-info mb-4 text-center float-right">Create Categories</a>
               <div class="table-responsive">

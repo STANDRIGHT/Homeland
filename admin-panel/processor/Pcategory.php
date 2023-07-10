@@ -7,17 +7,22 @@ if(isset($_POST["submit"])){
 
     if(empty($_POST["name"])){
         header("location:../dashboard/create-category.php");
-        $_SESSION["msg"] = "<div class='alert alert-danger'>Emty Fieldset</div>";
+        $_SESSION["Return-message"] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Hello! '.$userProfile->_adminName.'</strong> This Fieldset is Empty.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button></div>';
 
     }else{
         $resp = $gories->createCategories($name);
         if($resp['status']===1){
-            header("location:../dashboard/show-categories.php");
             $_SESSION["Return-message"] ='<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Hello! '.$userProfile->_adminName.'</strong> Category Successfully created.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button></div>';
+            header("location:../dashboard/show-categories.php");
+
            
             
         }else{

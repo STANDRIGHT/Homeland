@@ -53,7 +53,10 @@ if (isset($_GET["return"])) {
 
           <div class="card rounded shadow border-0">
             <div class="card-body p-5 bg-white rounded">
-              <?php if(isset($_SESSION["msg"])){ echo $_SESSION["msg"];} ?>
+              <?php if (isset($_SESSION["Return-message"])) {
+                echo  $_SESSION["Return-message"];
+                unset($_SESSION["Return-message"]);
+              } ?>
               <h5 class="card-title mb-4 d-inline">Request</h5>
               <div class="table-responsive">
                 <table id="example" style="width:100%" class="table table-striped table-bordered table-hover text-center ">
@@ -81,8 +84,7 @@ if (isset($_GET["return"])) {
                         <td><a href="mailto:<?php echo $request["Remail"]; ?>" data-tip="send mail" class="btn btn-info text-center "><i class="fa-solid fa-envelope fa-beat fa-lg"></i> Send mail</a></td>
                         <td>
                           <ul class="action-list">
-                            <!-- <li><a href="edit-request.php?id=<?= $request['Rid'] ?>" data-tip="edit"><i class="fa fa-edit"></i></a></li> -->
-                            <li><a href="delete-request.php?id=<?= $request['Rid'] ?>" data-tip="delete" class="btn btn-danger text-center"><i class="fa-solid fa-trash  fa-xl " style="color: #fff;"></i> Delete</a></li>
+                            <li><a href="delete-request.php?id=<?= $request['Rid'] ?>" data-tip="delete" class="btn btn-danger text-center text-white"><i class="fa-solid fa-trash  fa-xl " style="color: #fff;"></i> Delete</a></li>
                           </ul>
                         </td>
                       </tr>

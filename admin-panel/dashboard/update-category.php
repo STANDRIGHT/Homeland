@@ -31,11 +31,18 @@ $singleCategories = $gories->singleCategories($id);
 
     <div class="container">
       <div class="row">
-        <div class="col">
-          <div class="card">
+        <div class="col-md-8 col-lg-6 mb-6 m-auto">
+          <div class=" bg-dark">
             <div class="card-body">
               <?php if(isset( $_SESSION["Return-message"] )){ echo  $_SESSION["Return-message"] ; unset( $_SESSION["Return-message"] );} ?>
-              <h5 class="card-title mb-5 d-inline">Update Categories</h5>
+              <h5 class="card-title mb-5 d-inline text-white">Update Categories</h5>
+              <nav aria-label="..." class="float-right">
+                <ul class="pagination ">
+                  <li class="page-item">
+                    <a class="page-link" href="show-categories.php">Back</a>
+                  </li>
+                </ul>
+              </nav>
               <form method="POST" action="../processor/Pupdate-category.php?">
                 <!-- Email input -->
                 <div class="form-outline mb-4 mt-4">

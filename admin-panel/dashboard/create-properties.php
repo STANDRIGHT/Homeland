@@ -15,37 +15,38 @@
 <div id="wrapper">
 <?php include "component/header.php" ?>
 
-    <div class="container-fluid">
-       <div class="row">
-        <div class="col">
-          <div class="card">
+
+    <div class="container">
+       <div class="row w-100 m-auto">
+        <div class="col-md-10 col-lg-12 mb-8 m-auto">
+          <div class="card bg-light">
             <div class="card-body">
-                    <h5 class="card-title mb-5 d-inline">Create Properties</h5>
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <h5 class="card-title mb-5 d-inline text-dark">Create Properties</h5>
+                    <form method="POST" action="../processor/pproperties.php" enctype="multipart/form-data">
                         <!-- Email input -->
                         <div class="form-outline mb-4 mt-4">
-                            <input type="text" name="name" id="form2Example1" class="form-control" placeholder="name" />
+                            <input type="text" name="name"  class="form-control" placeholder="name" />
                         </div>    
                         <div class="form-outline mb-4 mt-4">
-                            <input type="text" name="location" id="form2Example1" class="form-control" placeholder="location" />
+                            <input type="text" name="location"  class="form-control" placeholder="location" />
                         </div> 
                         <div class="form-outline mb-4 mt-4">
-                            <input type="text" name="price" id="form2Example1" class="form-control" placeholder="price" />
+                            <input type="text" name="price"  class="form-control" placeholder="price" />
                         </div> 
                         <div class="form-outline mb-4 mt-4">
-                            <input type="text" name="beds" id="form2Example1" class="form-control" placeholder="beds" />
+                            <input type="text" name="beds"  class="form-control" placeholder="beds" />
                         </div>
                         <div class="form-outline mb-4 mt-4">
-                            <input type="text" name="baths" id="form2Example1" class="form-control" placeholder="baths" />
+                            <input type="text" name="baths"  class="form-control" placeholder="baths" />
                         </div>
                         <div class="form-outline mb-4 mt-4">
-                            <input type="text" name="sq_ft" id="form2Example1" class="form-control" placeholder="SQ/FT" />
+                            <input type="text" name="sq_ft"  class="form-control" placeholder="SQ/FT" />
                         </div>   
                         <div class="form-outline mb-4 mt-4">
-                            <input type="text" name="year_built" id="form2Example1" class="form-control" placeholder="Year Build" />
+                            <input type="text" name="year_built"  class="form-control" placeholder="Year Build" />
                         </div> 
                         <div class="form-outline mb-4 mt-4">
-                            <input type="text" name="price_sqft" id="form2Example1" class="form-control" placeholder="Price Per SQ FT" />
+                            <input type="text" name="price_sqft"  class="form-control" placeholder="Price Per SQ FT" />
                         </div> 
                         
                         <select name="home_type" class="form-control form-select" aria-label="Default select example">
@@ -61,19 +62,19 @@
                             <option value="3">Condo</option>
                         </select>  
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Description</label>
+                            <label for="exampleFormControlTextarea1" class="text-dark">Description</label>
                             <textarea placeholder="Description" name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Property Thumbnail</label>
+                            <label for="formFile" class="form-label text-dark">Property Thumbnail</label>
                             <input name="thumbnail" class="form-control" type="file" id="formFile">
                         </div>
                         <div class="mb-3">
-                            <label for="formFileMultiple" class="form-label">Gallery Images</label>
+                            <label for="formFileMultiple" class="form-label text-dark">Gallery Images</label>
                             <input name="images" class="form-control" type="file" id="formFileMultiple" multiple>
                         </div>
                         <!-- Submit button -->
-                        <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">create</button>
+                        <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Create</button>
                 
                     </form>
 
