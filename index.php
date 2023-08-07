@@ -2,6 +2,8 @@
 <?php include "config/config.php";?>
 
 <?php
+// echo password_hash("1234", PASSWORD_DEFAULT); 
+
   if(isset($_GET['type'])){
     $type = $_GET["type"];
 

@@ -201,7 +201,8 @@ class categories extends Database{
 }
 
 
-
+///////////////////////////////////////////////
+//////////////////////////////////////////////
 //CLASS FOR PROPERTIES
 class properties extends Database{
     public function props(){
@@ -217,11 +218,27 @@ class properties extends Database{
 
         return $allproperties;
     }
+
+
+    // public function Createprops($name, $_location, $price, $image, $beds, $bath, $sq_ft, $home_type, $Ptype, $year_built, $, $ ){
+        //make query for creating properties
+        // $properties=$this->prepare("INSERT ");
+
+        // $properties->execute();
+
+    // }
+
+
+
+
+
+
 }
 
 
-
-//REQUEST CLASS for clients
+///////////////////////////////////////////////
+//////////////////////////////////////////////
+//REQUEST CLASS FOR CLIENTS
 class  request  extends Database {
     public function request(){
         $request=$this->prepare("SELECT _id as Rid, _name as Rname, email as Remail, phone as Rphone, created_at as Rcreated_at

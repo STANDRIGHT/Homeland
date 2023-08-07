@@ -1,5 +1,5 @@
-<?php include "inc/header.php";?>
-<?php include "config/config.php";?>
+<?php include "../inc/header.php";?>
+<?php include "../config/config.php";?>
 
 <!-- CHECK FOR AUTHENTICITY OF THE FORM -->
 <?php 

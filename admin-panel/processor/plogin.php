@@ -1,5 +1,6 @@
 <?php
-// echo password_hash("1234", PASSWORD_DEFAULT); die();
+// echo password_hash("1234", PASSWORD_DEFAULT); 
+
 include "../dashboard/include/session.php";
 
 if(isset($_POST["submit"])){
@@ -13,7 +14,7 @@ if(isset($_POST["submit"])){
     }else{
         $resp = $app->login($email, $password);
         if($resp['status']===1){
-            header('location:../dashboard/');
+            header('location:../dashboard/index.php');
         }else{
             $_SESSION['msg']="<div class='alert alert-danger'>".$resp['message']."</div>";
             header('location:../');

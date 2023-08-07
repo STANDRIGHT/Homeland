@@ -3,7 +3,7 @@
 
 <?php
 //Check the potentials of the page if the id is here
-if (!isset($_GET["id"]) AND !isset($_SESSION["User_id"])){
+if (!isset($_GET["id"]) and !isset($_SESSION["User_id"])) {
   echo "<script>window.location.href ='404.php'</script>";
 }
 
@@ -21,7 +21,7 @@ if (isset($_GET["id"])) {
 
   // die();
 
-}else{
+} else {
   echo "<script>window.location.href ='404.php'</script>";
 }
 
@@ -90,7 +90,7 @@ if (isset($_SESSION['User_id'])) {
           <div class="slide-one-item home-slider owl-carousel">
             <?php foreach ($allgallary as $gala) : ?>
               <div><img src="gallary/<?php echo $gala->images ?>" alt="Image" class="img-fluid"></div>
-            <?php endforeach; ?>           
+            <?php endforeach; ?>
           </div>
         </div>
         <div class="bg-white property-body border-bottom border-left border-right">
@@ -179,7 +179,7 @@ if (isset($_SESSION['User_id'])) {
 
           <?php else : ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Hello! User you have to login before you can request for this property</strong>              
+              <strong>Hello! User you have to login before you can request for this property</strong>
               </button>
             </div>
 
@@ -201,7 +201,7 @@ if (isset($_SESSION['User_id'])) {
 
         <!-- FAVOURITE LINK -->
         <div class="bg-white widget border rounded">
-          <form action="addfav.php" method="POST" class="form-contact-agent">
+          <form action="fav/addfav.php" method="POST" class="form-contact-agent">
             <h3 class="h4 text-black widget-title mb-3">Add this to Favourite</h3>
             <?php if (!isset($_SESSION["User_id"])) {
               echo '<div class="alert alert-danger">
@@ -215,17 +215,16 @@ if (isset($_SESSION['User_id'])) {
 
             <div class="form-group">
               <!-- <label for="name">user_id</label> -->
-              <input type="hidden" name="user_id" class="form-control" value="<?php if (isset($_SESSION["User_id"])) {
-                                                                                echo $_SESSION['User_id'];
-                                                                              }  ?>">
+              <input type="hidden" name="user_id" class="form-control" 
+              value="<?php if (isset($_SESSION["User_id"])) {
+                echo $_SESSION['User_id'];
+                 }  ?>">
             </div>
 
             <?php if (isset($_SESSION["User_id"]) and isset($id)) : ?>
               <?php if ($fav->rowcount() > 0) : ?>
                 <div class="form-group">
-                  <a href="fav_delete.php?prop_id=<?php echo $id; ?>&fav_user=<?php if (isset($_SESSION["User_id"])) {
-                                                                                echo $_SESSION['User_id'];
-                                                                              }  ?>" class='btn btn-success text-white'>Added to Favourite</a>
+                  <a href="fav/fav_delete.php?prop_id=<?php echo $id; ?>&user_id=<?php echo $_SESSION['User_id']; ?>" class='btn btn-success text-white'>Added to Favourite</a>
                 </div>
 
               <?php else : ?>
